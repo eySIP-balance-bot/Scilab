@@ -39,6 +39,7 @@ while(i<=n)
     //writeserial(h,'t');
     //data(i)=ascii(readserial(h,1));
     slFlush(h);
+
     if slReadByte(h,1)==255 then     
         data=slReadByte(h,1);
         //data=slReadArray(h);
@@ -50,7 +51,10 @@ while(i<=n)
     xsegs([t,i],[prevdata,data]);
     plot(i,data2,'r-o');
     xsegs([t,i],[prevdata2,data2]);
+
     drawnow();
+    a.data_bounds=[i-10,-255;i+5,255];
+    a.tight_limits(1);
     t=i;
     prevdata=data;
     prevdata2=data2;
