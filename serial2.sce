@@ -1,4 +1,4 @@
-COMPORT=8;
+COMPORT=34;
 // mount library on handle "1"
 //slLoad();
 h=slMount()
@@ -11,13 +11,13 @@ slConfig(h,9600,8,0,1);
 
 // handle "1": open port
 if slOpen(h,COMPORT) then
-    printf("Port 8 open\n")
+    printf("Port open\n")
 else
     printf("Port over board!\n")
     abort
 end
 
-n=1;
+n=1000;
 i=2;
 t=1;
 prevdata=0;
@@ -149,9 +149,9 @@ while(i<=n)
         data2=2*(data2-127);
     //data=data-100;
     plot(i,data,'b-o');
-    xsegs([t,i*0.1],[prevdata,data]);
+    xsegs([t,i],[prevdata,data]);
     plot(i,data2,'r-o');
-    xsegs([t,i*0.1],[prevdata2,data2]);
+    xsegs([t,i],[prevdata2,data2]);
     //set(a,'tight_limits',"on");
     a.x_location = "middle";
     a.data_bounds=[i-100,-255;i+1,255];
