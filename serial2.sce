@@ -17,7 +17,7 @@ else
     abort
 end
 
-n=20;
+n=1;
 i=2;
 t=1;
 prevdata=0;
@@ -28,7 +28,7 @@ data2=0;
 //h=openserial(8,"9600,n,8,1",blocking=%t);
 //data=zeros(n*10);
 
-f=figure('figure_position',[300,50],'figure_size',[956,532],'auto_resize','on','background',[33],'figure_name','Balance Bot eSIP 2015');
+f=figure('figure_position',[300,0],'figure_size',[956,752],'auto_resize','on','background',[33],'figure_name','Balance Bot eSIP 2015');
 
 //////////
 delmenu(f.figure_id,gettext('File'))
@@ -36,7 +36,7 @@ delmenu(f.figure_id,gettext('?'))
 delmenu(f.figure_id,gettext('Tools'))
 toolbar(f.figure_id,'off')
 handles.dummy = 0;
-handles.stopb=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.5,0.9,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','STOP','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','stopb','Callback','stopb_callback(handles)')
+handles.stopb=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.9,0,0.08,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','STOP','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','stopb','Callback','stopb_callback(handles)')
 
 //////////
 // Callbacks are defined as below. Please do not delete the comments as it will be used in coming version
@@ -49,13 +49,14 @@ slUMount(h);
 abort;
 endfunction
 
-handles.inc_lil=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.9,0.6,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','+0.1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','inclil','Callback','inclil_callback(handles)')
-handles.dec_lil=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.7,0.6,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','-0.1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','declil','Callback','declil_callback(handles)')
-handles.inc_more=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.9,0.5,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','+5','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','incmore','Callback','incmore_callback(handles)')
-handles.dec_more=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.7,0.5,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','-5','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','decmore','Callback','decmore_callback(handles)')
-handles.inc=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.9,0.4,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','+1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','inc','Callback','inc_callback(handles)')
-handles.dec=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.7,0.4,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','-1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','dec','Callback','dec_callback(handles)')
-handles.list=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','left','ListboxTop',[1],'Max',[1],'Min',[0],'Position',[0.8015625,0.7091189,0.0984375,0.20],'Relief','default','SliderStep',[0.01,0.1],'String','Kp|Ki|Kd|F/B','Style','listbox','Value',[3],'VerticalAlignment','middle','Visible','on','Tag','list','Callback','list_callback(handles)')
+handles.inc_lil=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.5,0.3,0.08,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','+0.1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','inclil','Callback','inclil_callback(handles)')
+handles.dec_lil=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.4,0.3,0.08,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','-0.1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','declil','Callback','declil_callback(handles)')
+handles.inc_more=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.5,0.1,0.08,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','+5','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','incmore','Callback','incmore_callback(handles)')
+handles.dec_more=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.4,0.1,0.08,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','-5','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','decmore','Callback','decmore_callback(handles)')
+handles.inc=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.5,0.2,0.08,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','+1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','inc','Callback','inc_callback(handles)')
+handles.dec=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.4,0.2,0.08,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','-1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','dec','Callback','dec_callback(handles)')
+handles.list=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','left','ListboxTop',[1],'Max',[1],'Min',[0],'Position',[0.25,0.17,0.0984375,0.20],'Relief','default','SliderStep',[0.01,0.1],'String','Kp|Ki|Kd|F/B','Style','listbox','Value',[3],'VerticalAlignment','middle','Visible','on','Tag','list','Callback','list_callback(handles)')
+handles.tuning=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[20],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','left','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.3340611,0,0.1831659,0.06096],'Relief','default','SliderStep',[0.01,0.1],'String','Tuning Parameters','Style','text','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','tuning','Callback','')
 
 
 //////////
@@ -107,19 +108,26 @@ function list_callback(handles)
 data=get(handles.list,'value');
 if data ==4 then
     slSendByte(h,48);
+    slSendByte(h,48);
+    slSendByte(h,48);
 else
+    slSendByte(h,data+54);
+    slSendByte(h,data+54);
     slSendByte(h,data+54);
 end
 
 //disp(data);
 endfunction
 
-subplot(121)
+subplot(211)
 plot(0,20)
 a=gca(); // Handle on axes entity
 //a.x_location = "origin"; 
 a.y_location = "origin";
 //f.figure_size= [100,530];
+ylabel("Input/Output value", "fontsize",2 );
+xlabel("Time(in sec)","fontsize",3);
+title(a,'Pid Input and Output','fontsize',4);
 tic();
 while(i<=n)
     //h=openserial(8,"9600,n,8,1",blocking=%t);
@@ -141,9 +149,9 @@ while(i<=n)
         data2=2*(data2-127);
     //data=data-100;
     plot(i,data,'b-o');
-    xsegs([t,i],[prevdata,data]);
+    xsegs([t,i*0.1],[prevdata,data]);
     plot(i,data2,'r-o');
-    xsegs([t,i],[prevdata2,data2]);
+    xsegs([t,i*0.1],[prevdata2,data2]);
     //set(a,'tight_limits',"on");
     a.x_location = "middle";
     a.data_bounds=[i-100,-255;i+1,255];
@@ -166,7 +174,7 @@ while(i<=n)
 end
 //closeserial(h);
 slClose(h); 
-ret = slUMount(h);
+slUMount(h);
    
 
 
