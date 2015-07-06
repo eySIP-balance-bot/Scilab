@@ -23,7 +23,7 @@
 //Second byte:<received_data>-100;
 //Third byte:(<received_data>/2)-127;
 //-----------------------------------------------------------------------------------------------------
-
+//This code uses the SISELI serial library Version 0.7 for serial communication
 
 COMPORT=8;
 // mount library on handle "h"
