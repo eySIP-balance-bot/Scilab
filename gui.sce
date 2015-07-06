@@ -32,13 +32,18 @@ handles.dec_more=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'E
 handles.inc=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.5,0.4,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','+1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','inc','Callback','inc_callback(handles)')
 handles.dec=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.3,0.4,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','-1','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','dec','Callback','dec_callback(handles)')
 handles.list=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','left','ListboxTop',[1],'Max',[1],'Min',[0],'Position',[0.4015625,0.7091189,0.0984375,0.20],'Relief','default','SliderStep',[0.01,0.1],'String','Kp|Ki|Kd|F/B','Style','listbox','Value',[3],'VerticalAlignment','middle','Visible','on','Tag','list','Callback','list_callback(handles)')
-
+handles.stopb=uicontrol(f,'unit','normalized','BackgroundColor',[-1,-1,-1],'Enable','on','FontAngle','normal','FontName','Tahoma','FontSize',[12],'FontUnits','points','FontWeight','normal','ForegroundColor',[-1,-1,-1],'HorizontalAlignment','center','ListboxTop',[],'Max',[1],'Min',[0],'Position',[0.9,0.9,0.1,0.1],'Relief','default','SliderStep',[0.01,0.1],'String','STOP','Style','pushbutton','Value',[0],'VerticalAlignment','middle','Visible','on','Tag','stopb','Callback','stopb_callback(handles)')
 
 //////////
 // Callbacks are defined as below. Please do not delete the comments as it will be used in coming version
 //////////
 
-
+function stopb_callback(handles)
+//Write your callback for  stopb  here
+//slClose(h);
+slUMount(h);
+abort;
+endfunction
 
 function inclil_callback(handles)
 //Write your callback for  inc_lil  here
